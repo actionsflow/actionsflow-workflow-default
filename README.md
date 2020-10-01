@@ -87,6 +87,8 @@ Actionsflow build will use cache for deduplicating the data, if you want to test
 npm run clean
 ```
 
+> If you want to run workflows built by Actionsflow locally, you should use `npm run act`, for more information, see [act](https://github.com/nektos/act)
+
 # 🎓 Learn More <a name="reference"></a>
 
 Full documentation for Actionsflow lives [on the website](https://actionsflow.github.io/docs/).
