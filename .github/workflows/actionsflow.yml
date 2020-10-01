@@ -1,0 +1,23 @@
+name: Actionsflow
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+  push:
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    name: Run
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Actionsflow
+        uses: actionsflow/actionsflow-action@v1
+        with:
+          args: build
+          json-secrets: ${{ toJSON(secrets) }}
+          json-github: ${{ toJSON(github) }}
+      - name: Setup act
+        uses: actionsflow/setup-act-for-actionsflow@v1
+      - name: Run act
+        run: act --workflows ./dist/workflows --secret-file ./dist/.secrets --eventpath ./dist/event.json --env-file ./dist/.env

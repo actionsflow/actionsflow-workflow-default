@@ -1,0 +1,27 @@
+name: Upgrade Local Actionsflow
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [new_version_with_actionsflow]
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Checkout Branch
+        run: git checkout main
+      - name: Configure CI Git User
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+      - name: Update
+        run: |
+          npm ci
+          npm update actionsflow
+      - name: Git Push
+        run: |
+          git add package.json package-lock.json
+          git commit -m "chore: upgrade actionsflow dependencies"
+          git push
