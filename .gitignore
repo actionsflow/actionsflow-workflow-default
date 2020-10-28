@@ -6,6 +6,8 @@
 # Icon must end with two \r
 Icon
 
+# Actionsflow
+.actionsflow
 
 # Thumbnails
 ._*
