@@ -58,13 +58,6 @@ Then, Actionsflow will run your workflows as you defined, you can view logs at y
 
 For more information, see [Full documentation](https://actionsflow.github.io/docs/)
 
-## Run manually
-
-The power of Actionsflow comes from the Github workflow file [`.github/workflows/actionsflow.yml`](./.github/workflows/actionsflow.yml), usually, Actionsflow runs with [`a per 5 minutes' scheduled event`](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#scheduled-events), but you can also run it manually by [`workflow_dispatch` event](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/manually-running-a-workflow). Click Actions tab of your repository, and click `Run workflow` at `Actionsflow` workflow.
-
-For more information, see [Manually running a workflow](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#scheduled-events)
-
-
 ## Run Locally
 
 You can run self-hosted Actionsflow manually or [by docker](https://actionsflow.github.io/docs/self-hosted/#docker): 
@@ -73,13 +66,7 @@ You can run self-hosted Actionsflow manually or [by docker](https://actionsflow.
 
 1. Install [docker](https://docs.docker.com/get-docker/)
 1. Install [act](https://github.com/nektos/act)
-
-
-### Install
-
-```bash
-npm install
-```
+1. Install dependencies by running `npm install`
 
 ### Start
 
