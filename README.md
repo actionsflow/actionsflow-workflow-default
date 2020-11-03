@@ -67,12 +67,28 @@ For more information, see [Manually running a workflow](https://docs.github.com/
 
 ## Run Locally
 
-You can run Actionsflow locally for testing your workflow files.
+You can run self-hosted Actionsflow manually or [by docker](https://actionsflow.github.io/docs/self-hosted/#docker): 
+
+## Prerequisites
+
+1. Install [docker](https://docs.docker.com/get-docker/)
+1. Install [act](https://github.com/nektos/act)
+
 
 ### Install
 
 ```bash
 npm install
+```
+
+### Start
+
+Start Actionsflow locally:
+
+```bash
+npm run start
+# Then, the cron job and webhook server will start running
+# The webhook endpoint will be ran at http://localhost:3000/webhook/
 ```
 
 ### Build
@@ -91,7 +107,8 @@ Actionsflow build will use cache for deduplicating the data, if you want to test
 npm run clean
 ```
 
-> If you want to run workflows built by Actionsflow locally, you should use `npm run act`, for more information, see [act](https://github.com/nektos/act)
+Learn more abount self-hosted Actionsflow [here](https://actionsflow.github.io/docs/self-hosted)
+
 
 # 🎓 Learn More <a name="reference"></a>
 
