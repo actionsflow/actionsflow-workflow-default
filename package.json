@@ -15,6 +15,7 @@
   "scripts": {
     "build": "actionsflow build",
     "start": "actionsflow start",
+    "watch": "actionsflow start -w",
     "act": "act --workflows ./dist/workflows --secret-file ./dist/.secrets --eventpath ./dist/event.json --env-file ./dist/.env -P ubuntu-latest=actionsflow/act-environment:v1 -P ubuntu-18.04=actionsflow/act-environment:v1",
     "clean": "actionsflow clean",
     "test": "echo \"Error: no test specified\" && exit 1"
