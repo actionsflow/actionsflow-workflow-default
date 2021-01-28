@@ -29,7 +29,7 @@ jobs:
       - name: Run Actionsflow
         uses: actionsflow/actionsflow-action@v1
         with:
-          args: build --include ${{ github.event.inputs.include }} -f ${{github.event.inputs.force}} --verbose ${{github.event.inputs.verbose}}
+          args: "build --include ${{ github.event.inputs.include || ''}} -f ${{github.event.inputs.force=='true' && 'true' || 'false'}} --verbose ${{github.event.inputs.verbose=='true' && 'true' || 'false'}}"
           json-secrets: ${{ toJSON(secrets) }}
           json-github: ${{ toJSON(github) }}
       - name: Setup act
