@@ -28,7 +28,7 @@ Build an Actionsflow workflow is a three-step process:
       schedule:
         - cron: "*/15 * * * *"
     ```
-    > Note: To prevent abuse, by default, the schedule is commented, please modify the schedule time according to your own needs, the default is once every 15 minutes.
+    > Note: To prevent abuse, by default, the schedule is commented, please modify the schedule time according to your own needs, the default is once every 15 minutes. Learn more about schedule event, please see [here](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule)
 
 1. **Define your [workflow file](https://actionsflow.github.io/docs/workflow/) at `workflows` directory**
 
