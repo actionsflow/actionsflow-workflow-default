@@ -21,6 +21,15 @@ Build an Actionsflow workflow is a three-step process:
    └── package.json
    ```
 
+1. **Uncomment [`.github/workflows/actionsflow.yml`](/.github/workflows/actionsflow.yml) schedule event**
+
+    ```yml
+    on:
+      schedule:
+        - cron: "*/15 * * * *"
+    ```
+    > Note: To prevent abuse, by default, the schedule is commented, please modify the schedule time according to your own needs, the default is once every 15 minutes.
+
 1. **Define your [workflow file](https://actionsflow.github.io/docs/workflow/) at `workflows` directory**
 
    A typical workflow file `rss.yml` looks like this:

@@ -1,5 +1,10 @@
 name: Actionsflow
 on:
+  # schedule:
+  #   - cron: "*/15 * * * *"
+  push:
+    branches:
+      - main
   repository_dispatch:
   workflow_dispatch:
     inputs:
@@ -15,11 +20,6 @@ on:
         description: "--verbose: debug workflow, true or false"
         required: false
         default: "false"
-  schedule:
-    - cron: "*/5 * * * *"
-  push:
-    branches:
-      - main
 jobs:
   run:
     runs-on: ubuntu-latest
