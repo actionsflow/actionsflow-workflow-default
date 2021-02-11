@@ -3,7 +3,7 @@ This is a workflow repository powered by [Actionsflow](https://github.com/action
 
 # 🏁 Getting Started <a name = "getting_started"></a>
 
-Build an Actionsflow workflow is a three-step process:
+Build an Actionsflow workflow is a four-step process:
 
 1. **Create a public Github repository by this [link](https://github.com/actionsflow/actionsflow-workflow-default/generate).**
 
