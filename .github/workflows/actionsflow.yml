@@ -25,14 +25,32 @@ jobs:
     runs-on: ubuntu-latest
     name: Run
     steps:
+      - name: Check is running
+        uses: actions/github-script@v4
+        id: runningCount
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const runed = await github.actions.listWorkflowRuns({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: "actionsflow.yml",
+              status:"in_progress"
+            });
+            return runed.data.total_count
+          result-encoding: string
       - uses: actions/checkout@v2
+        if: steps.runningCount.outputs.result=='1'
       - name: Run Actionsflow
+        if: steps.runningCount.outputs.result=='1'
         uses: actionsflow/actionsflow-action@v1
         with:
           args: "build --include ${{ github.event.inputs.include || ''}} -f ${{github.event.inputs.force=='true' && 'true' || 'false'}} --verbose ${{github.event.inputs.verbose=='true' && 'true' || 'false'}}"
           json-secrets: ${{ toJSON(secrets) }}
           json-github: ${{ toJSON(github) }}
       - name: Setup act
+        if: steps.runningCount.outputs.result=='1'
         uses: actionsflow/setup-act-for-actionsflow@v1
       - name: Run act
+        if: steps.runningCount.outputs.result=='1'
         run: act --workflows ./dist/workflows --secret-file ./dist/.secrets --eventpath ./dist/event.json --env-file ./dist/.env -P ubuntu-latest=actionsflow/act-environment:v1 -P ubuntu-18.04=actionsflow/act-environment:v1
