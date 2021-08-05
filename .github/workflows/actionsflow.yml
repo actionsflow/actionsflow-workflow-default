@@ -35,9 +35,9 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: "actionsflow.yml",
-              status:"in_progress"
             });
-            return runed.data.total_count
+            const totalCount=runed.data.workflow_runs.filter(item=>item.status==="in_progress").length;
+            return totalCount;
           result-encoding: string
       - uses: actions/checkout@v2
         if: steps.runningCount.outputs.result=='1'
