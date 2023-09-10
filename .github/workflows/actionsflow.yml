@@ -26,14 +26,14 @@ jobs:
     name: Run
     concurrency: actionsflow
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run Actionsflow
-        uses: actionsflow/actionsflow-action@v1
+        uses: actionsflow/actionsflow-action@v1.3.0
         with:
           args: "build --include ${{ github.event.inputs.include || ''}} -f ${{github.event.inputs.force=='true' && 'true' || 'false'}} --verbose ${{github.event.inputs.verbose=='true' && 'true' || 'false'}}"
           json-secrets: ${{ toJSON(secrets) }}
           json-github: ${{ toJSON(github) }}
       - name: Setup act
-        uses: actionsflow/setup-act-for-actionsflow@v1
+        uses: actionsflow/setup-act-for-actionsflow@v1.2.0
       - name: Run act
         run: act --workflows ./dist/workflows --secret-file ./dist/.secrets --eventpath ./dist/event.json --env-file ./dist/.env -P ubuntu-latest=actionsflow/act-environment:v1 -P ubuntu-18.04=actionsflow/act-environment:v1
